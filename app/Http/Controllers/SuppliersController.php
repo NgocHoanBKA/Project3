@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\suppliers;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
@@ -34,7 +35,10 @@ class SuppliersController extends Controller
     }
     public function add_supplier(){
         $this->AuthLogin();
-        $products = DB::table('tbl_product')->get();
+        $today = Carbon::now('Asia/Ho_Chi_Minh')->format('Y/m/d');
+        $products = DB::table('tbl_product')->where('ExpirationDate','>',$today)
+            ->orderBy('product_id','desc')
+            ->get();
     	return view('admin.add_supplier',compact('products'));
     }
     /**

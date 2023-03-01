@@ -9,7 +9,7 @@
     @endpush
     <div class="col-md-12" style="padding: 50px 35px;">
         <div class="main-card mb-3 card">
-            <div class="card-header">Active Users
+            <div class="card-header">Đơn hàng
                 <div class="btn-actions-pane-right">
                     <div role="group" class="btn-group-sm btn-group">
                         <button class="active btn btn-focus">Last Week</button>

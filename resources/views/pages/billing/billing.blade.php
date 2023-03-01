@@ -52,7 +52,7 @@
                             <input type="hidden" name="order_fee" class="order_fee"
                                    value="{{Session::get('fee')}}">
                         @else
-                            <input type="hidden" name="order_fee" class="order_fee" value="10000">
+                            <input type="hidden" name="order_fee" class="order_fee" value="20000">
                         @endif
 
                         @if(Session::get('coupon'))

@@ -43,7 +43,6 @@
                         <th>Giá bán</th>
                         <th>Giá gốc</th>
                         <th>Hình sản phẩm</th>
-                        <th>Ngày sản xuất</th>
                         <th>Ngày hết hạn</th>
                         <th>Hạn</th>
                         <th style="width:30px;"></th>
@@ -58,8 +57,6 @@
                             <td>{{ number_format($pro->product_price,0,',','.') }}đ</td>
                             <td>{{ number_format($pro->price_cost,0,',','.') }}đ</td>
                             <td><img src="{{asset('uploads/product/'.$pro->product_image)}}" height="100" width="100"></td>
-{{--                            <td>{{ $pro->category_name }}</td>--}}
-                            <td>{{ $pro->ManufactureDate }}</td>
                             <td>{{ $pro->ExpirationDate }}</td>
                             <td>
                                     <span class="text text-success">Còn hạn</span>

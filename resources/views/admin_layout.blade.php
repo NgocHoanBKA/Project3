@@ -79,7 +79,11 @@
     <div class="app-header header-shadow">
         <div class="app-header__logo">
             <div class="logo-srcs">
-                <img src="public/layout/img/logo-2.png" alt="" style="vertical-align: middle;">
+                <h3>
+                    <span style="color: rgba(251, 139, 166, 0.70);">Cake</span>
+                    <span style="color: rgba(194,139,228, 0.9)">Bakery</span>
+
+                </h3>
             </div>
             <div class="header__pane ml-auto">
                 <div>
@@ -165,7 +169,7 @@
                             </div>
                             <div class="widget-content-left  ml-3 header-user-info">
                                 <div class="widget-heading">
-                                    Alina Mclourd
+                                    Ngoc Hoan
                                 </div>
                                 <div class="widget-subheading">
                                     VP People Manager
@@ -704,13 +708,13 @@
                                 <li>
                                     <a href="{{URL::to('/add-supplier')}}">
                                         <i class="metismenu-icon">
-                                        </i>Nhập hàng hóa
+                                        </i>Nhập nguyên liệu
                                     </a>
                                 </li>
                                 <li>
                                     <a href="{{URL::to('/all-suppliers')}}">
                                         <i class="metismenu-icon">
-                                        </i>Liệt kê danh sách hàng hóa
+                                        </i>Liệt kê danh sách nguyên liệu
                                     </a>
                                 </li>
                             </ul>

@@ -19,7 +19,7 @@
         <thead>
           <tr>
             <th>STT</th>
-            <th>Tên sản phẩm</th>
+            <th style="width:30%;">Tên sản phẩm</th>
             <th>SL</th>
             <th>Giá bán</th>
             <th>Giá gốc</th>
@@ -27,7 +27,7 @@
             <th>Danh mục</th>
             <th>Ngày hết hạn</th>
             <th>Hạn</th>
-            <th style="width:30px;"></th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -35,7 +35,7 @@
           @foreach($all_product as $key => $pro)
           <tr>
             <td><?php echo $stt++ ?></td>
-            <td>{{ $pro->product_name }}</td>
+            <td style="width:30%;">{{ $pro->product_name }}</td>
             <td>{{ $pro->product_quantity }}</td>
             <td>{{ number_format($pro->product_price,0,',','.') }}đ</td>
             <td>{{ number_format($pro->price_cost,0,',','.') }}đ</td>
@@ -66,7 +66,7 @@
           <tfoot>
           <tr>
               <th>STT</th>
-              <th>Tên sản phẩm</th>
+              <th style="width:30%;">Tên sản phẩm</th>
               <th>Số lượng</th>
               <th>Giá bán</th>
               <th>Giá gốc</th>
@@ -75,7 +75,7 @@
               <th>Ngày sản xuất</th>
               <th>Ngày hết hạn</th>
               <th>Hạn</th>
-              <th style="width:30px;"></th>
+              <th ></th>
           </tr>
           </tfoot>
       </table>

@@ -67,11 +67,11 @@
                             </td>
 
 
-                            <td>
-                                <a onclick="return confirm('Bạn có chắc là muốn xóa sản phẩm này ko?')" href="{{URL::to('/delete-product/'.$pro->product_id)}}" class="active styling-edit" ui-toggle-class="">
-                                    <i class="fa fa-times text-danger text"></i>
-                                </a>
-                            </td>
+{{--                            <td>--}}
+{{--                                <a onclick="return confirm('Bạn có chắc là muốn xóa sản phẩm này ko?')" href="{{URL::to('/delete-product/'.$pro->product_id)}}" class="active styling-edit" ui-toggle-class="">--}}
+{{--                                    <i class="fa fa-times text-danger text"></i>--}}
+{{--                                </a>--}}
+{{--                            </td>--}}
                         </tr>
                     @endforeach
                     </tbody>

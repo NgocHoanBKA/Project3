@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 13, 2021 lúc 05:03 PM
+-- Thời gian đã tạo: Th12 02, 2021 lúc 04:11 AM
 -- Phiên bản máy phục vụ: 10.4.18-MariaDB
 -- Phiên bản PHP: 7.3.27
 
@@ -49,6 +49,18 @@ INSERT INTO `admin_roles` (`id_admin_roles`, `admin_admin_id`, `roles_id_roles`)
 (75, 5, 3),
 (76, 5, 1),
 (77, 4, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `migrations`
+--
+
+CREATE TABLE `migrations` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `batch` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -329,20 +341,19 @@ CREATE TABLE `tbl_product` (
 --
 
 INSERT INTO `tbl_product` (`product_id`, `product_name`, `product_quantity`, `product_sold`, `category_id`, `brand_id`, `ManufactureDate`, `ExpirationDate`, `product_desc`, `product_content`, `product_price`, `price_cost`, `product_image`, `product_status`, `expiry`, `created_at`, `updated_at`) VALUES
-(1, 'Bánh dâu', '30', 60, 20, 14, '2021/11/25', '2021/11/30', '<p>Ra đời từ những năm 1948, thương hiệu b&aacute;nh&nbsp;<strong>Brodard 1948</strong>&nbsp;đ&atilde; kế thừa nhiều c&ocirc;ng nghệ sản xuất cũng như kỹ thuật l&agrave;m&nbsp;<strong>b&aacute;nh ngọt</strong>&nbsp;ti&ecirc;n tiến của Ph&aacute;p,&hellip;&nbsp;<strong>Brodard 1948</strong>&nbsp;nổi tiếng với c&aacute;c loại&nbsp;<strong>b&aacute;nh ngọt</strong>&nbsp;mang hương vị Ph&aacute;p như: pat&eacute; chaud, croissant, muffin, b&aacute;nh gateaux, tiramisu&hellip; Đặc điểm của c&aacute;c loại b&aacute;nh n&agrave;y l&agrave; được chế biến v&agrave; sản xuất ngay trong ng&agrave;y, n&ecirc;n c&oacute; thể đảm bảo được độ tươi ngon cần thiết sản phẩm. Ngo&agrave;i ra th&igrave; b&aacute;nh kem tại&nbsp;<strong>Brodard 1948</strong>&nbsp;cũng kh&aacute; ngon, c&aacute;c sản phẩm b&aacute;nh kem đang chiếm rất nhiều thiện cảm của người ti&ecirc;u d&ugrave;ng. Mỗi khi đến những dịp lễ hội, Trung Thu, Gi&aacute;ng Sinh,...&nbsp;<strong>Brodard 1948</strong>&nbsp;thường cho ra l&ograve; những loại b&aacute;nh mang đậm chất lễ hội đ&oacute;. C&aacute;c sản phẩm&nbsp;<strong>b</strong><strong>&aacute;nh ngọt Brodard 1948&nbsp;</strong>thường kh&ocirc;ng chỉ chăm ch&uacute;t về nguy&ecirc;n vật liệu, m&agrave; c&ograve;n được chăm ch&uacute;t về h&igrave;nh thức, c&aacute;ch tr&igrave;nh b&agrave;y sản phẩm.</p>', NULL, '20000', '10000', 'c-feature-194.jpg', 0, 0, NULL, NULL),
-(2, 'bánh  crepe mật ngọt', '30', 120, 20, 14, '2021/12/01', '2021/12/15', '<p>Ra đời từ những năm 1948, thương hiệu b&aacute;nh&nbsp;<strong>Brodard 1948</strong>&nbsp;đ&atilde; kế thừa nhiều c&ocirc;ng nghệ sản xuất cũng như kỹ thuật l&agrave;m&nbsp;<strong>b&aacute;nh ngọt</strong>&nbsp;ti&ecirc;n tiến của Ph&aacute;p,&hellip;&nbsp;<strong>Brodard 1948</strong>&nbsp;nổi tiếng với c&aacute;c loại&nbsp;<strong>b&aacute;nh ngọt</strong>&nbsp;mang hương vị Ph&aacute;p như: pat&eacute; chaud, croissant, muffin, b&aacute;nh gateaux, tiramisu&hellip; Đặc điểm của c&aacute;c loại b&aacute;nh n&agrave;y l&agrave; được chế biến v&agrave; sản xuất ngay trong ng&agrave;y, n&ecirc;n c&oacute; thể đảm bảo được độ tươi ngon cần thiết sản phẩm. Ngo&agrave;i ra th&igrave; b&aacute;nh kem tại&nbsp;<strong>Brodard 1948</strong>&nbsp;cũng kh&aacute; ngon, c&aacute;c sản phẩm b&aacute;nh kem đang chiếm rất nhiều thiện cảm của người ti&ecirc;u d&ugrave;ng. Mỗi khi đến những dịp lễ hội, Trung Thu, Gi&aacute;ng Sinh,...&nbsp;<strong>Brodard 1948</strong>&nbsp;thường cho ra l&ograve; những loại b&aacute;nh mang đậm chất lễ hội đ&oacute;. C&aacute;c sản phẩm&nbsp;<strong>b</strong><strong>&aacute;nh ngọt Brodard 1948&nbsp;</strong>thường kh&ocirc;ng chỉ chăm ch&uacute;t về nguy&ecirc;n vật liệu, m&agrave; c&ograve;n được chăm ch&uacute;t về h&igrave;nh thức, c&aacute;ch tr&igrave;nh b&agrave;y sản phẩm.</p>', '<p>Ra đời từ những năm 1948, thương hiệu b&aacute;nh&nbsp;<strong>Brodard 1948</strong>&nbsp;đ&atilde; kế thừa nhiều c&ocirc;ng nghệ sản xuất cũng như kỹ thuật l&agrave;m&nbsp;<strong>b&aacute;nh ngọt</strong>&nbsp;ti&ecirc;n tiến của Ph&aacute;p,&hellip;&nbsp;<strong>Brodard 1948</strong>&nbsp;nổi tiếng với c&aacute;c loại&nbsp;<strong>b&aacute;nh ngọt</strong>&nbsp;mang hương vị Ph&aacute;p như: pat&eacute; chaud, croissant, muffin, b&aacute;nh gateaux, tiramisu&hellip;</p>', '15000', '5000', 'c-feature-485.jpg', 0, 0, NULL, NULL),
-(3, 'Bánh trà xanh', '30', NULL, 21, 17, '2021/11/14', '2021/11/17', '<p>Ra đời từ những năm 1948, thương hiệu b&aacute;nh&nbsp;<strong>Brodard 1948</strong>&nbsp;đ&atilde; kế thừa nhiều c&ocirc;ng nghệ sản xuất cũng như kỹ thuật l&agrave;m&nbsp;<strong>b&aacute;nh ngọt</strong>&nbsp;ti&ecirc;n tiến của Ph&aacute;p,&hellip;&nbsp;<strong>Brodard 1948</strong>&nbsp;nổi tiếng với c&aacute;c loại&nbsp;<strong>b&aacute;nh ngọt</strong>&nbsp;mang hương vị Ph&aacute;p như: pat&eacute; chaud, croissant, muffin, b&aacute;nh gateaux, tiramisu&hellip;</p>', '<p>Đặc điểm của c&aacute;c loại b&aacute;nh n&agrave;y l&agrave; được chế biến v&agrave; sản xuất ngay trong ng&agrave;y, n&ecirc;n c&oacute; thể đảm bảo được độ tươi ngon cần thiết sản phẩm. Ngo&agrave;i ra th&igrave; b&aacute;nh kem tại&nbsp;<strong>Brodard 1948</strong>&nbsp;cũng kh&aacute; ngon, c&aacute;c sản phẩm b&aacute;nh kem đang chiếm rất nhiều thiện cảm của người ti&ecirc;u d&ugrave;ng. Mỗi khi đến những dịp lễ hội, Trung Thu, Gi&aacute;ng Sinh,...&nbsp;<strong>Brodard 1948</strong>&nbsp;thường cho ra l&ograve; những loại b&aacute;nh mang đậm chất lễ hội đ&oacute;. C&aacute;c sản phẩm&nbsp;<strong>b</strong><strong>&aacute;nh ngọt Brodard 1948&nbsp;</strong>thường kh&ocirc;ng chỉ chăm ch&uacute;t về nguy&ecirc;n vật liệu, m&agrave; c&ograve;n được chăm ch&uacute;t về h&igrave;nh thức, c&aacute;ch tr&igrave;nh b&agrave;y sản phẩm.</p>', '25000', '15000', 'c-feature-27.jpg', 0, 0, NULL, NULL),
-(4, 'Bánh caramen', '100', NULL, 19, 15, '2021/11/24', '2021/11/28', '<p>Đặc điểm của c&aacute;c loại b&aacute;nh n&agrave;y l&agrave; được chế biến v&agrave; sản xuất ngay trong ng&agrave;y, n&ecirc;n c&oacute; thể đảm bảo được độ tươi ngon cần thiết sản phẩm. Ngo&agrave;i ra th&igrave; b&aacute;nh kem tại&nbsp;<strong>Brodard 1948</strong>&nbsp;cũng kh&aacute; ngon, c&aacute;c sản phẩm b&aacute;nh kem đang chiếm rất nhiều thiện cảm của người ti&ecirc;u d&ugrave;ng. Mỗi khi đến những dịp lễ hội, Trung Thu, Gi&aacute;ng Sinh,...&nbsp;<strong>Brodard 1948</strong>&nbsp;thường cho ra l&ograve; những loại b&aacute;nh mang đậm chất lễ hội đ&oacute;. C&aacute;c sản phẩm&nbsp;<strong>b</strong><strong>&aacute;nh ngọt Brodard 1948&nbsp;</strong>thường kh&ocirc;ng chỉ chăm ch&uacute;t về nguy&ecirc;n vật liệu, m&agrave; c&ograve;n được chăm ch&uacute;t về h&igrave;nh thức, c&aacute;ch tr&igrave;nh b&agrave;y sản phẩm.</p>', '<p>Đặc điểm của c&aacute;c loại b&aacute;nh n&agrave;y l&agrave; được chế biến v&agrave; sản xuất ngay trong ng&agrave;y, n&ecirc;n c&oacute; thể đảm bảo được độ tươi ngon cần thiết sản phẩm. Ngo&agrave;i ra th&igrave; b&aacute;nh kem tại&nbsp;<strong>Brodard 1948</strong>&nbsp;cũng kh&aacute; ngon, c&aacute;c sản phẩm b&aacute;nh kem đang chiếm rất nhiều thiện cảm của người ti&ecirc;u d&ugrave;ng. Mỗi khi đến những dịp lễ hội, Trung Thu, Gi&aacute;ng Sinh,...&nbsp;<strong>Brodard 1948</strong>&nbsp;thường cho ra l&ograve; những loại b&aacute;nh mang đậm chất lễ hội đ&oacute;. C&aacute;c sản phẩm&nbsp;<strong>b</strong><strong>&aacute;nh ngọt Brodard 1948&nbsp;</strong>thường kh&ocirc;ng chỉ chăm ch&uacute;t về nguy&ecirc;n vật liệu, m&agrave; c&ograve;n được chăm ch&uacute;t về h&igrave;nh thức, c&aacute;ch tr&igrave;nh b&agrave;y sản phẩm.</p>', '17000', '12000', 'c-feature-472.jpg', 0, 0, NULL, NULL),
-(5, 'Bánh nướng phu thê', '70', NULL, 24, 14, '2021/10/19', '2021/10/22', '<p><strong>Kinh Đ&ocirc; Bakery</strong>&nbsp;l&agrave; một trong những thương hiệu b&aacute;nh ngọt c&oacute; truyền thống l&acirc;u đời nhất tại Việt Nam, với kiểu d&aacute;ng sản phẩm đơn giản, ấn tượng, bắt mắt b&ecirc;n ngo&agrave;i h&ograve;a lẫn hương vị thơm ngon b&ecirc;n trong. Sản phẩm đ&atilde; thu h&uacute;t kh&aacute;ch h&agrave;ng từ c&aacute;i nh&igrave;n đầu ti&ecirc;n. Khi đến với&nbsp;<strong>Kinh Đ&ocirc; Bakery</strong>&nbsp;kh&aacute;ch h&agrave;ng c&oacute; thể cảm nhận m&ugrave;i vị tuyệt vời đến từ những chiếc b&aacute;nh mới thơm ngon. Người thợ l&agrave;m b&aacute;nh của&nbsp;<strong>Kinh Đ&ocirc; Bakery</strong>&nbsp;đ&atilde; kh&ocirc;ng ngừng học hỏi v&agrave; t&igrave;m kiếm những c&ocirc;ng thức l&agrave;m b&aacute;nh. Nguy&ecirc;n vật liệu m&agrave;&nbsp;<strong>Kinh Đ&ocirc; Bakery</strong>&nbsp;sử dụng để l&agrave;m b&aacute;nh l&agrave; những vật liệu tươi ngon nhất.</p>', '<p><strong>Kinh Đ&ocirc; Bakery</strong>&nbsp;l&agrave; một trong những thương hiệu b&aacute;nh ngọt c&oacute; truyền thống l&acirc;u đời nhất tại Việt Nam, với kiểu d&aacute;ng sản phẩm đơn giản, ấn tượng, bắt mắt b&ecirc;n ngo&agrave;i h&ograve;a lẫn hương vị thơm ngon b&ecirc;n trong. Sản phẩm đ&atilde; thu h&uacute;t kh&aacute;ch h&agrave;ng từ c&aacute;i nh&igrave;n đầu ti&ecirc;n. Khi đến với&nbsp;<strong>Kinh Đ&ocirc; Bakery</strong>&nbsp;kh&aacute;ch h&agrave;ng c&oacute; thể cảm nhận m&ugrave;i vị tuyệt vời đến từ những chiếc b&aacute;nh mới thơm ngon. Người thợ l&agrave;m b&aacute;nh của&nbsp;<strong>Kinh Đ&ocirc; Bakery</strong>&nbsp;đ&atilde; kh&ocirc;ng ngừng học hỏi v&agrave; t&igrave;m kiếm những c&ocirc;ng thức l&agrave;m b&aacute;nh. Nguy&ecirc;n vật liệu m&agrave;&nbsp;<strong>Kinh Đ&ocirc; Bakery</strong>&nbsp;sử dụng để l&agrave;m b&aacute;nh l&agrave; những vật liệu tươi ngon nhất.</p>', '20000', '13000', 'c-feature-341.jpg', 0, 0, NULL, NULL),
-(6, 'Bánh kem sinh nhật', '40', 40, 22, 16, '2021/10/30', '2021/11/05', '<p><strong>Givral&nbsp;</strong>l&agrave; một thương hiệu b&aacute;nh ngọt danh tiếng của S&agrave;i G&ograve;n c&oacute; bề d&agrave;y lịch sử hơn 60 năm.&nbsp;<strong>Givral</strong>&nbsp;đ&atilde; thực sự mang đến n&eacute;t tao nh&atilde;, tinh tế của nền văn h&oacute;a ẩm thực Ph&aacute;p v&agrave;o trong những sản phẩm của m&igrave;nh.Trong suốt qu&atilde;ng thời gian vừa qua, b&aacute;nh&nbsp;<strong>Givral</strong>&nbsp;đ&atilde; nổi bật tr&ecirc;n thị trường b&aacute;nh ngọt l&agrave; thương hiệu b&aacute;nh hướng đến người ti&ecirc;u d&ugrave;ng, v&igrave; sức khỏe người ti&ecirc;u d&ugrave;ng. N&oacute;i đến&nbsp;<strong>Givral</strong>&nbsp;l&agrave; n&oacute;i đến c&aacute;c d&ograve;ng b&aacute;nh tươi, ho&agrave;n to&agrave;n kh&ocirc;ng c&oacute; c&aacute;c chất bảo quản hay phụ gia g&acirc;y ảnh hưởng đến sức khỏe người d&ugrave;ng. Nguy&ecirc;n vật liệu l&agrave;m b&aacute;nh được&nbsp;<strong>Givral</strong>&nbsp;mua từ những nguồn h&agrave;ng chất lượng, được ch&iacute;nh&nbsp;<strong>Givral</strong>&nbsp;tiến h&agrave;nh kiểm tra chất lượng đầu v&agrave;o.</p>', '<p><strong>Givral&nbsp;</strong>l&agrave; một thương hiệu b&aacute;nh ngọt danh tiếng của S&agrave;i G&ograve;n c&oacute; bề d&agrave;y lịch sử hơn 60 năm.&nbsp;<strong>Givral</strong>&nbsp;đ&atilde; thực sự mang đến n&eacute;t tao nh&atilde;, tinh tế của nền văn h&oacute;a ẩm thực Ph&aacute;p v&agrave;o trong những sản phẩm của m&igrave;nh.Trong suốt qu&atilde;ng thời gian vừa qua, b&aacute;nh&nbsp;<strong>Givral</strong>&nbsp;đ&atilde; nổi bật tr&ecirc;n thị trường b&aacute;nh ngọt l&agrave; thương hiệu b&aacute;nh hướng đến người ti&ecirc;u d&ugrave;ng, v&igrave; sức khỏe người ti&ecirc;u d&ugrave;ng. N&oacute;i đến&nbsp;<strong>Givral</strong>&nbsp;l&agrave; n&oacute;i đến c&aacute;c d&ograve;ng b&aacute;nh tươi, ho&agrave;n to&agrave;n kh&ocirc;ng c&oacute; c&aacute;c chất bảo quản hay phụ gia g&acirc;y ảnh hưởng đến sức khỏe người d&ugrave;ng. Nguy&ecirc;n vật liệu l&agrave;m b&aacute;nh được&nbsp;<strong>Givral</strong>&nbsp;mua từ những nguồn h&agrave;ng chất lượng, được ch&iacute;nh&nbsp;<strong>Givral</strong>&nbsp;tiến h&agrave;nh kiểm tra chất lượng đầu v&agrave;o.</p>', '150000', '12000', 'c-feature-646.jpg', 1, 0, NULL, NULL),
-(8, 'banh gao câmry', '2', NULL, 24, 19, '2021/11/29', '2021/12/04', '<p>fdsfs</p>', '<p>sdfdf</p>', '100000', '80000', 'special-121.png', 0, 0, NULL, NULL),
-(9, 'Bánh bông lan', '100', NULL, 24, 19, '2021/11/22', '2021/11/28', '<p>ok</p>', '<p>ok</p>', '300000', '250000', 'bakery-113.jpg', 0, 0, NULL, NULL),
-(10, 'Bánh phu thê mật ngot', '50', NULL, 20, 15, '2021/12/22', '2021/12/24', '<p>ok</p>', '<p>ok</p>', '20000', '1500', 'ok15.jpg', 0, 0, NULL, NULL),
-(11, 'Bánh caramen pháp', '30', NULL, 24, 19, '2021/11/07', '2021/11/25', '<p>ok</p>', NULL, '100000', '60000', 'bakery-318.jpg', 0, 0, NULL, NULL),
-(12, 'bánh sinh nhật xuan truong', '100', NULL, 22, 14, '2021-11-05', '2021-11-09', '<p>qu&aacute; l&agrave; ok lu&ocirc;n</p>', NULL, '250000', '150000', 'portfolio-370.jpg', 0, 1, NULL, NULL),
+(1, 'Bánh dâu', '30', 60, 20, 14, '2021-12-25', '2021-12-30', '<p>Ra đời từ những năm 1948, thương hiệu b&aacute;nh&nbsp;<strong>Brodard 1948</strong>&nbsp;đ&atilde; kế thừa nhiều c&ocirc;ng nghệ sản xuất cũng như kỹ thuật l&agrave;m&nbsp;<strong>b&aacute;nh ngọt</strong>&nbsp;ti&ecirc;n tiến của Ph&aacute;p,&hellip;&nbsp;<strong>Brodard 1948</strong>&nbsp;nổi tiếng với c&aacute;c loại&nbsp;<strong>b&aacute;nh ngọt</strong>&nbsp;mang hương vị Ph&aacute;p như: pat&eacute; chaud, croissant, muffin, b&aacute;nh gateaux, tiramisu&hellip; Đặc điểm của c&aacute;c loại b&aacute;nh n&agrave;y l&agrave; được chế biến v&agrave; sản xuất ngay trong ng&agrave;y, n&ecirc;n c&oacute; thể đảm bảo được độ tươi ngon cần thiết sản phẩm. Ngo&agrave;i ra th&igrave; b&aacute;nh kem tại&nbsp;<strong>Brodard 1948</strong>&nbsp;cũng kh&aacute; ngon, c&aacute;c sản phẩm b&aacute;nh kem đang chiếm rất nhiều thiện cảm của người ti&ecirc;u d&ugrave;ng. Mỗi khi đến những dịp lễ hội, Trung Thu, Gi&aacute;ng Sinh,...&nbsp;<strong>Brodard 1948</strong>&nbsp;thường cho ra l&ograve; những loại b&aacute;nh mang đậm chất lễ hội đ&oacute;. C&aacute;c sản phẩm&nbsp;<strong>b</strong><strong>&aacute;nh ngọt Brodard 1948&nbsp;</strong>thường kh&ocirc;ng chỉ chăm ch&uacute;t về nguy&ecirc;n vật liệu, m&agrave; c&ograve;n được chăm ch&uacute;t về h&igrave;nh thức, c&aacute;ch tr&igrave;nh b&agrave;y sản phẩm.</p>', NULL, '20000', '10000', 'c-feature-194.jpg', 1, 0, NULL, NULL),
+(2, 'bánh  crepe mật ngọt', '30', 120, 20, 14, '2021-12-01', '2021-12-15', '<p>Ra đời từ những năm 1948, thương hiệu b&aacute;nh&nbsp;<strong>Brodard 1948</strong>&nbsp;đ&atilde; kế thừa nhiều c&ocirc;ng nghệ sản xuất cũng như kỹ thuật l&agrave;m&nbsp;<strong>b&aacute;nh ngọt</strong>&nbsp;ti&ecirc;n tiến của Ph&aacute;p,&hellip;&nbsp;<strong>Brodard 1948</strong>&nbsp;nổi tiếng với c&aacute;c loại&nbsp;<strong>b&aacute;nh ngọt</strong>&nbsp;mang hương vị Ph&aacute;p như: pat&eacute; chaud, croissant, muffin, b&aacute;nh gateaux, tiramisu&hellip; Đặc điểm của c&aacute;c loại b&aacute;nh n&agrave;y l&agrave; được chế biến v&agrave; sản xuất ngay trong ng&agrave;y, n&ecirc;n c&oacute; thể đảm bảo được độ tươi ngon cần thiết sản phẩm. Ngo&agrave;i ra th&igrave; b&aacute;nh kem tại&nbsp;<strong>Brodard 1948</strong>&nbsp;cũng kh&aacute; ngon, c&aacute;c sản phẩm b&aacute;nh kem đang chiếm rất nhiều thiện cảm của người ti&ecirc;u d&ugrave;ng. Mỗi khi đến những dịp lễ hội, Trung Thu, Gi&aacute;ng Sinh,...&nbsp;<strong>Brodard 1948</strong>&nbsp;thường cho ra l&ograve; những loại b&aacute;nh mang đậm chất lễ hội đ&oacute;. C&aacute;c sản phẩm&nbsp;<strong>b</strong><strong>&aacute;nh ngọt Brodard 1948&nbsp;</strong>thường kh&ocirc;ng chỉ chăm ch&uacute;t về nguy&ecirc;n vật liệu, m&agrave; c&ograve;n được chăm ch&uacute;t về h&igrave;nh thức, c&aacute;ch tr&igrave;nh b&agrave;y sản phẩm.</p>', '<p>Ra đời từ những năm 1948, thương hiệu b&aacute;nh&nbsp;<strong>Brodard 1948</strong>&nbsp;đ&atilde; kế thừa nhiều c&ocirc;ng nghệ sản xuất cũng như kỹ thuật l&agrave;m&nbsp;<strong>b&aacute;nh ngọt</strong>&nbsp;ti&ecirc;n tiến của Ph&aacute;p,&hellip;&nbsp;<strong>Brodard 1948</strong>&nbsp;nổi tiếng với c&aacute;c loại&nbsp;<strong>b&aacute;nh ngọt</strong>&nbsp;mang hương vị Ph&aacute;p như: pat&eacute; chaud, croissant, muffin, b&aacute;nh gateaux, tiramisu&hellip;</p>', '15000', '5000', 'c-feature-485.jpg', 1, 0, NULL, NULL),
+(3, 'Bánh trà xanh', '30', NULL, 21, 17, '2021-12-14', '2021-12-17', '<p>Ra đời từ những năm 1948, thương hiệu b&aacute;nh&nbsp;<strong>Brodard 1948</strong>&nbsp;đ&atilde; kế thừa nhiều c&ocirc;ng nghệ sản xuất cũng như kỹ thuật l&agrave;m&nbsp;<strong>b&aacute;nh ngọt</strong>&nbsp;ti&ecirc;n tiến của Ph&aacute;p,&hellip;&nbsp;<strong>Brodard 1948</strong>&nbsp;nổi tiếng với c&aacute;c loại&nbsp;<strong>b&aacute;nh ngọt</strong>&nbsp;mang hương vị Ph&aacute;p như: pat&eacute; chaud, croissant, muffin, b&aacute;nh gateaux, tiramisu&hellip;</p>', '<p>Đặc điểm của c&aacute;c loại b&aacute;nh n&agrave;y l&agrave; được chế biến v&agrave; sản xuất ngay trong ng&agrave;y, n&ecirc;n c&oacute; thể đảm bảo được độ tươi ngon cần thiết sản phẩm. Ngo&agrave;i ra th&igrave; b&aacute;nh kem tại&nbsp;<strong>Brodard 1948</strong>&nbsp;cũng kh&aacute; ngon, c&aacute;c sản phẩm b&aacute;nh kem đang chiếm rất nhiều thiện cảm của người ti&ecirc;u d&ugrave;ng. Mỗi khi đến những dịp lễ hội, Trung Thu, Gi&aacute;ng Sinh,...&nbsp;<strong>Brodard 1948</strong>&nbsp;thường cho ra l&ograve; những loại b&aacute;nh mang đậm chất lễ hội đ&oacute;. C&aacute;c sản phẩm&nbsp;<strong>b</strong><strong>&aacute;nh ngọt Brodard 1948&nbsp;</strong>thường kh&ocirc;ng chỉ chăm ch&uacute;t về nguy&ecirc;n vật liệu, m&agrave; c&ograve;n được chăm ch&uacute;t về h&igrave;nh thức, c&aacute;ch tr&igrave;nh b&agrave;y sản phẩm.</p>', '25000', '15000', 'c-feature-27.jpg', 0, 0, NULL, NULL),
+(4, 'Bánh caramen', '100', NULL, 19, 15, '2021-12-24', '2021-12-28', '<p>Đặc điểm của c&aacute;c loại b&aacute;nh n&agrave;y l&agrave; được chế biến v&agrave; sản xuất ngay trong ng&agrave;y, n&ecirc;n c&oacute; thể đảm bảo được độ tươi ngon cần thiết sản phẩm. Ngo&agrave;i ra th&igrave; b&aacute;nh kem tại&nbsp;<strong>Brodard 1948</strong>&nbsp;cũng kh&aacute; ngon, c&aacute;c sản phẩm b&aacute;nh kem đang chiếm rất nhiều thiện cảm của người ti&ecirc;u d&ugrave;ng. Mỗi khi đến những dịp lễ hội, Trung Thu, Gi&aacute;ng Sinh,...&nbsp;<strong>Brodard 1948</strong>&nbsp;thường cho ra l&ograve; những loại b&aacute;nh mang đậm chất lễ hội đ&oacute;. C&aacute;c sản phẩm&nbsp;<strong>b</strong><strong>&aacute;nh ngọt Brodard 1948&nbsp;</strong>thường kh&ocirc;ng chỉ chăm ch&uacute;t về nguy&ecirc;n vật liệu, m&agrave; c&ograve;n được chăm ch&uacute;t về h&igrave;nh thức, c&aacute;ch tr&igrave;nh b&agrave;y sản phẩm.</p>', '<p>Đặc điểm của c&aacute;c loại b&aacute;nh n&agrave;y l&agrave; được chế biến v&agrave; sản xuất ngay trong ng&agrave;y, n&ecirc;n c&oacute; thể đảm bảo được độ tươi ngon cần thiết sản phẩm. Ngo&agrave;i ra th&igrave; b&aacute;nh kem tại&nbsp;<strong>Brodard 1948</strong>&nbsp;cũng kh&aacute; ngon, c&aacute;c sản phẩm b&aacute;nh kem đang chiếm rất nhiều thiện cảm của người ti&ecirc;u d&ugrave;ng. Mỗi khi đến những dịp lễ hội, Trung Thu, Gi&aacute;ng Sinh,...&nbsp;<strong>Brodard 1948</strong>&nbsp;thường cho ra l&ograve; những loại b&aacute;nh mang đậm chất lễ hội đ&oacute;. C&aacute;c sản phẩm&nbsp;<strong>b</strong><strong>&aacute;nh ngọt Brodard 1948&nbsp;</strong>thường kh&ocirc;ng chỉ chăm ch&uacute;t về nguy&ecirc;n vật liệu, m&agrave; c&ograve;n được chăm ch&uacute;t về h&igrave;nh thức, c&aacute;ch tr&igrave;nh b&agrave;y sản phẩm.</p>', '17000', '12000', 'c-feature-472.jpg', 0, 0, NULL, NULL),
+(5, 'Bánh nướng phu thê', '70', NULL, 24, 14, '2021-12-19', '2021-12-22', '<p><strong>Kinh Đ&ocirc; Bakery</strong>&nbsp;l&agrave; một trong những thương hiệu b&aacute;nh ngọt c&oacute; truyền thống l&acirc;u đời nhất tại Việt Nam, với kiểu d&aacute;ng sản phẩm đơn giản, ấn tượng, bắt mắt b&ecirc;n ngo&agrave;i h&ograve;a lẫn hương vị thơm ngon b&ecirc;n trong. Sản phẩm đ&atilde; thu h&uacute;t kh&aacute;ch h&agrave;ng từ c&aacute;i nh&igrave;n đầu ti&ecirc;n. Khi đến với&nbsp;<strong>Kinh Đ&ocirc; Bakery</strong>&nbsp;kh&aacute;ch h&agrave;ng c&oacute; thể cảm nhận m&ugrave;i vị tuyệt vời đến từ những chiếc b&aacute;nh mới thơm ngon. Người thợ l&agrave;m b&aacute;nh của&nbsp;<strong>Kinh Đ&ocirc; Bakery</strong>&nbsp;đ&atilde; kh&ocirc;ng ngừng học hỏi v&agrave; t&igrave;m kiếm những c&ocirc;ng thức l&agrave;m b&aacute;nh. Nguy&ecirc;n vật liệu m&agrave;&nbsp;<strong>Kinh Đ&ocirc; Bakery</strong>&nbsp;sử dụng để l&agrave;m b&aacute;nh l&agrave; những vật liệu tươi ngon nhất.</p>', '<p><strong>Kinh Đ&ocirc; Bakery</strong>&nbsp;l&agrave; một trong những thương hiệu b&aacute;nh ngọt c&oacute; truyền thống l&acirc;u đời nhất tại Việt Nam, với kiểu d&aacute;ng sản phẩm đơn giản, ấn tượng, bắt mắt b&ecirc;n ngo&agrave;i h&ograve;a lẫn hương vị thơm ngon b&ecirc;n trong. Sản phẩm đ&atilde; thu h&uacute;t kh&aacute;ch h&agrave;ng từ c&aacute;i nh&igrave;n đầu ti&ecirc;n. Khi đến với&nbsp;<strong>Kinh Đ&ocirc; Bakery</strong>&nbsp;kh&aacute;ch h&agrave;ng c&oacute; thể cảm nhận m&ugrave;i vị tuyệt vời đến từ những chiếc b&aacute;nh mới thơm ngon. Người thợ l&agrave;m b&aacute;nh của&nbsp;<strong>Kinh Đ&ocirc; Bakery</strong>&nbsp;đ&atilde; kh&ocirc;ng ngừng học hỏi v&agrave; t&igrave;m kiếm những c&ocirc;ng thức l&agrave;m b&aacute;nh. Nguy&ecirc;n vật liệu m&agrave;&nbsp;<strong>Kinh Đ&ocirc; Bakery</strong>&nbsp;sử dụng để l&agrave;m b&aacute;nh l&agrave; những vật liệu tươi ngon nhất.</p>', '20000', '13000', 'c-feature-341.jpg', 0, 0, NULL, NULL),
+(6, 'Bánh kem sinh nhật', '40', 40, 22, 16, '2021-12-30', '2021-12-05', '<p><strong>Givral&nbsp;</strong>l&agrave; một thương hiệu b&aacute;nh ngọt danh tiếng của S&agrave;i G&ograve;n c&oacute; bề d&agrave;y lịch sử hơn 60 năm.&nbsp;<strong>Givral</strong>&nbsp;đ&atilde; thực sự mang đến n&eacute;t tao nh&atilde;, tinh tế của nền văn h&oacute;a ẩm thực Ph&aacute;p v&agrave;o trong những sản phẩm của m&igrave;nh.Trong suốt qu&atilde;ng thời gian vừa qua, b&aacute;nh&nbsp;<strong>Givral</strong>&nbsp;đ&atilde; nổi bật tr&ecirc;n thị trường b&aacute;nh ngọt l&agrave; thương hiệu b&aacute;nh hướng đến người ti&ecirc;u d&ugrave;ng, v&igrave; sức khỏe người ti&ecirc;u d&ugrave;ng. N&oacute;i đến&nbsp;<strong>Givral</strong>&nbsp;l&agrave; n&oacute;i đến c&aacute;c d&ograve;ng b&aacute;nh tươi, ho&agrave;n to&agrave;n kh&ocirc;ng c&oacute; c&aacute;c chất bảo quản hay phụ gia g&acirc;y ảnh hưởng đến sức khỏe người d&ugrave;ng. Nguy&ecirc;n vật liệu l&agrave;m b&aacute;nh được&nbsp;<strong>Givral</strong>&nbsp;mua từ những nguồn h&agrave;ng chất lượng, được ch&iacute;nh&nbsp;<strong>Givral</strong>&nbsp;tiến h&agrave;nh kiểm tra chất lượng đầu v&agrave;o.</p>', '<p><strong>Givral&nbsp;</strong>l&agrave; một thương hiệu b&aacute;nh ngọt danh tiếng của S&agrave;i G&ograve;n c&oacute; bề d&agrave;y lịch sử hơn 60 năm.&nbsp;<strong>Givral</strong>&nbsp;đ&atilde; thực sự mang đến n&eacute;t tao nh&atilde;, tinh tế của nền văn h&oacute;a ẩm thực Ph&aacute;p v&agrave;o trong những sản phẩm của m&igrave;nh.Trong suốt qu&atilde;ng thời gian vừa qua, b&aacute;nh&nbsp;<strong>Givral</strong>&nbsp;đ&atilde; nổi bật tr&ecirc;n thị trường b&aacute;nh ngọt l&agrave; thương hiệu b&aacute;nh hướng đến người ti&ecirc;u d&ugrave;ng, v&igrave; sức khỏe người ti&ecirc;u d&ugrave;ng. N&oacute;i đến&nbsp;<strong>Givral</strong>&nbsp;l&agrave; n&oacute;i đến c&aacute;c d&ograve;ng b&aacute;nh tươi, ho&agrave;n to&agrave;n kh&ocirc;ng c&oacute; c&aacute;c chất bảo quản hay phụ gia g&acirc;y ảnh hưởng đến sức khỏe người d&ugrave;ng. Nguy&ecirc;n vật liệu l&agrave;m b&aacute;nh được&nbsp;<strong>Givral</strong>&nbsp;mua từ những nguồn h&agrave;ng chất lượng, được ch&iacute;nh&nbsp;<strong>Givral</strong>&nbsp;tiến h&agrave;nh kiểm tra chất lượng đầu v&agrave;o.</p>', '150000', '12000', 'c-feature-646.jpg', 1, 0, NULL, NULL),
+(9, 'Bánh bông lan', '100', NULL, 24, 19, '2021-12-22', '2021-12-28', '<p>ok</p>', '<p>ok</p>', '300000', '250000', 'bakery-113.jpg', 0, 0, NULL, NULL),
+(10, 'Bánh phu thê mật ngot', '50', NULL, 20, 15, '2021-12-22', '2021-12-24', '<p>ok</p>', '<p>ok</p>', '20000', '1500', 'ok15.jpg', 1, 0, NULL, NULL),
+(11, 'Bánh caramen pháp', '30', NULL, 24, 19, '2021-12-07', '2021-12-25', '<p>ok</p>', NULL, '100000', '60000', 'bakery-318.jpg', 0, 0, NULL, NULL),
+(12, 'bánh sinh nhật xuan truong', '100', NULL, 22, 14, '2021-12-05', '2021-12-09', '<p>qu&aacute; l&agrave; ok lu&ocirc;n</p>', NULL, '250000', '150000', 'portfolio-370.jpg', 0, 1, NULL, NULL),
 (13, 'bánh trung thu hendtai', '75', NULL, 20, 14, '2021-11-20', '2021-11-26', '<p>sản phẩm ok</p>', NULL, '75000', '50000', 'portfolio-393.jpg', 0, 0, NULL, NULL),
 (14, 'bánh xoài tây', '120', NULL, 24, 19, '2021-11-14', '2021-11-27', '<p>ok</p>', NULL, '130000', '76000', 'portfolio-749.jpg', 1, 1, NULL, NULL),
-(15, 'bánh xoài xanh', '150', NULL, 24, 19, '2021/11/17', '2021/11/21', '<p>ok đấy</p>', NULL, '240000', '190000', 'comming-bg86.jpg', 1, 1, NULL, NULL);
+(15, 'bánh xoài xanh', '150', NULL, 24, 19, '2021-11-17', '2021-11-21', '<p>ok đấy</p>', NULL, '240000', '190000', 'comming-bg86.jpg', 1, 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1273,6 +1284,33 @@ INSERT INTO `tbl_statistical` (`id_statistical`, `order_date`, `sales`, `profit`
 (67, '2020-09-03', '63000000', '19000000', 14, 5),
 (68, '2020-09-02', '66000000', '18000000', 23, 12),
 (69, '2020-09-01', '74000000', '20000000', 32, 20);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `tbl_suppliers`
+--
+
+CREATE TABLE `tbl_suppliers` (
+  `id_supplier` int(11) NOT NULL,
+  `supplier_name` varchar(100) NOT NULL,
+  `material_name` varchar(100) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `unit` tinyint(1) NOT NULL DEFAULT 1,
+  `date` date NOT NULL,
+  `price` int(20) NOT NULL,
+  `total` int(30) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Đang đổ dữ liệu cho bảng `tbl_suppliers`
+--
+
+INSERT INTO `tbl_suppliers` (`id_supplier`, `supplier_name`, `material_name`, `quantity`, `unit`, `date`, `price`, `total`) VALUES
+(1, 'Hoa thực phẩm', 'Bột mỳ', 10, 1, '2021-11-20', 20000, 0),
+(2, 'Pepsi', 'Lon pepsi', 10, 0, '2021-11-23', 10000, 100000),
+(4, 'voka', 'Rượu', 20, 0, '2021-11-19', 15000, 300000),
+(5, 'Như ý', 'bột tạo màu', 20, 1, '2021-11-23', 12000, 240000);
 
 -- --------------------------------------------------------
 
@@ -12572,6 +12610,12 @@ ALTER TABLE `admin_roles`
   ADD PRIMARY KEY (`id_admin_roles`);
 
 --
+-- Chỉ mục cho bảng `migrations`
+--
+ALTER TABLE `migrations`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Chỉ mục cho bảng `tbl_admin`
 --
 ALTER TABLE `tbl_admin`
@@ -12662,6 +12706,12 @@ ALTER TABLE `tbl_statistical`
   ADD PRIMARY KEY (`id_statistical`);
 
 --
+-- Chỉ mục cho bảng `tbl_suppliers`
+--
+ALTER TABLE `tbl_suppliers`
+  ADD PRIMARY KEY (`id_supplier`);
+
+--
 -- Chỉ mục cho bảng `tbl_tinhthanhpho`
 --
 ALTER TABLE `tbl_tinhthanhpho`
@@ -12688,6 +12738,12 @@ ALTER TABLE `users`
 --
 ALTER TABLE `admin_roles`
   MODIFY `id_admin_roles` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
+
+--
+-- AUTO_INCREMENT cho bảng `migrations`
+--
+ALTER TABLE `migrations`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT cho bảng `tbl_admin`
@@ -12772,6 +12828,12 @@ ALTER TABLE `tbl_social`
 --
 ALTER TABLE `tbl_statistical`
   MODIFY `id_statistical` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
+
+--
+-- AUTO_INCREMENT cho bảng `tbl_suppliers`
+--
+ALTER TABLE `tbl_suppliers`
+  MODIFY `id_supplier` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT cho bảng `users`

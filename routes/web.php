@@ -19,7 +19,6 @@ Route::get('/','HomeController@index' )->name('home');
 Route::get('/trang-chu','HomeController@index');
 Route::get('/404','HomeController@error_page');
 Route::post('/tim-kiem','HomeController@search');
-
 //Danh muc san pham trang chu
 Route::get('/danh-muc/{slug_category_product}','CategoryProduct@show_category_home');
 Route::get('/thuong-hieu/{brand_slug}','BrandProduct@show_brand_home');
@@ -93,7 +92,6 @@ Route::post('/update-brand-product/{brand_product_id}','BrandProduct@update_bran
 	Route::get('/product/expired','ProductController@expired')->name('product_expired');
 	Route::get('/product/expire','ProductController@expire')->name('product_expire');
 	Route::get('/product/sale','ProductController@productSaled')->name('product_sale');
-	Route::post('/filter-price','ProductController@filter_price')->name('filter-price');
 // });
 Route::get('users',
 		[
@@ -153,6 +151,7 @@ Route::post('/confirm-order','CheckoutController@confirm_order')->name('confirm_
 Route::get('/confirm-check-order','CheckoutController@check_order')->name('check_order');
 Route::post('/vn-payment','CheckoutController@vnPayment')->name('vn_Payment');
 Route::get('/billing-complete','CheckoutController@billingComplete')->name('billingComplete');
+Route::get('/account','CheckoutController@account')->name('account');
 
 //Order
 Route::get('/delete-order/{order_code}','OrderController@order_code');
@@ -181,4 +180,11 @@ Route::get('/active-slide/{slide_id}','SliderController@active_slide');
 
 Route::get('test',function (){
     return view('admin.dashboard.content');
+});
+Route::get('test',function (){
+	$haystack = Array('one', 'two', 'three');
+	if (($key = array_search('one', $haystack)) !== FALSE) {
+	  unset($haystack[$key]);
+	}
+	dd($haystack);
 });

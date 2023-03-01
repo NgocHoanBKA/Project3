@@ -50,30 +50,14 @@
                     <?php
                     $customer_id = Session::get('customer_id');
                     $shipping_id = Session::get('shipping_id');
-                    if($customer_id != NULL && $shipping_id == NULL){
                     ?>
-                    <li><a href="{{URL::to('/checkout')}}"><i class="fa fa-crosshairs"></i> Thanh toán</a></li>
-
-                    <?php
-                    }elseif($customer_id != NULL && $shipping_id != NULL){
-                    ?>
-                    <li><a href="{{URL::to('/payment')}}"><i class="fa fa-crosshairs"></i> Thanh toán</a></li>
-                    <?php
-                    }else{
-                    ?>
-                    <li><a href="{{URL::to('/dang-nhap')}}"><i class="fa fa-crosshairs"></i> Thanh toán</a></li>
-                    <?php
-                    }
-                    ?>
-
-
                     <li><a href="{{URL::to('/gio-hang')}}"><i class="fa fa-shopping-cart"></i> Giỏ hàng</a></li>
                     <?php
                     $customer_id = Session::get('customer_id');
                     if($customer_id != NULL){
                     ?>
+                    <li><a href="{{URL::to('/account')}}"><i class="fa fa-user"></i> Thông tin</a></li>
                     <li><a href="{{URL::to('/logout-checkout')}}"><i class="fa fa-lock"></i> Đăng xuất</a></li>
-
                     <?php
                     }else{
                     ?>

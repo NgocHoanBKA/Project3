@@ -92,21 +92,21 @@ class OrderController extends Controller
                 $price_cost = $product->price_cost;
                 $now = Carbon::now('Asia/Ho_Chi_Minh')->toDateString();
 
-                foreach($data['quantity'] as $key2 => $qty){
+                foreach($data['quantity'] as $key2 => $qtys){
 
                     if($key==$key2){
-                        $pro_remain = $product_quantity - $qty;
-                        $product->product_quantity = $pro_remain;
-                        $product->product_sold = $product_sold + $qty;
-                        $container['b_quantity'] = $qty;
-                        $container['c_quantity'] = $pro_remain;
+                        $pro_remains = $product_quantity - $qtys;
+                        $product->product_quantity = $pro_remains;
+                        $product->product_sold = $product_sold + $qtys;
+                        $container['b_quantity'] = $qtys;
+                        $container['c_quantity'] = $pro_remains;
                         DB::table('tbl_warehouse')->insert($container);
                         $product->save();
                         //update doanh thu
-                        $quantity+=$qty;
+                        $quantity+=$qtys;
                         $total_order+=1;
-                        $sales+=$product_price*$qty;
-                        $profit += ($product_price*$qty)-($price_cost*$qty);
+                        $sales+=$product_price*$qtys;
+                        $profit += ($product_price*$qtys)-($price_cost*$qtys);
                     }
 
                 }
@@ -145,12 +145,16 @@ class OrderController extends Controller
                 foreach($data['order_product_id'] as $key => $product_id){
 
                     $product = Product::find($product_id);
+                    Log::info($product);
                     $product_quantity = $product->product_quantity;
                     $product_sold = $product->product_sold;
+                    Log::info($product_quantity);
                     foreach($data['quantity'] as $key2 => $qty){
+                        Log::info($qty);
                         if($key==$key2){
                             $pro_remain = $product_quantity + $qty;
                             $product->product_quantity = $pro_remain;
+                            Log::info($pro_remain);
                             $product->product_sold = $product_sold - $qty;
                             $product->save();
                         }
@@ -374,12 +378,12 @@ class OrderController extends Controller
 		$shipping = Shipping::where('shipping_id', $shipping_id)->first();
 
 		$order_details_product = OrderDetails::with('product')->where('order_code', $order_code)->get();
-
 		foreach ($order_details_product as $key => $order_d) {
 
 			$product_coupon = $order_d->product_coupon;
-		}
-		if ($product_coupon != 'no') {
+
+        }
+		if (!empty($product_coupon) && ($product_coupon != 'no')) {
 			$coupon = Coupon::where('coupon_code', $product_coupon)->first();
 			$coupon_condition = $coupon->coupon_condition;
 			$coupon_number = $coupon->coupon_number;

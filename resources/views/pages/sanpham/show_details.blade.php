@@ -27,7 +27,27 @@
                             <input type="hidden" value="{{$value->product_price}}"
                                    class="cart_product_price_{{$value->product_id}}">
                         <h4>{{$value->product_name}}</h4>
-                        <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequ untur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, </p>
+                        <p> Nguyên liệu làm bánh Cake Bakery đạt tiêu chuẩn cho sức khỏe, thành phần trong bánh bao gồm:
+                            @foreach(@@$value_cakes as $cake)
+                                @if($cake->material_name == 0)
+                                     <span class="text-success"> Bột mì </span>
+                                @elseif($cake->material_name == 1)
+                                    <span class="text-success"> Bột tạo màu </span>
+                                 @elseif($cake->material_name == 2)
+                                    <span class="text-success"> Bơ </span>
+                                 @elseif($cake->material_name == 3)
+                                    <span class="text-success"> Đường </span>
+                                 @elseif($cake->material_name == 4)
+                                    <span class="text-success"> Sữa </span>
+                                @elseif($cake->material_name == 5)
+                                    <span class="text-success"> Vani </span>
+                                @elseif($cake->material_name == 6)
+
+                                @else
+                                    <span></span>
+                                @endif
+                            @endforeach
+                        </p>
                         <h5>Price: <span>{{ number_format($value->product_price,0,',','.') }} VNĐ</span></h5>
                         <div class="quantity_box">
                             <label for="quantity">Quantity :</label>

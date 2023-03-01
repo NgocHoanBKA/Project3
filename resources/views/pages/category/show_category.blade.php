@@ -9,8 +9,8 @@
 
                         @endforeach
                         @foreach($category_by_id as $key => $product)
-                        <a href="{{URL::to('/chi-tiet/'.$product->product_slug)}}">
-                        <div class="col-sm-4">
+                        <a href="{{URL::to('/chi-tiet/'.$product->slug_category_product)}}">
+                        <div class="col-lg-3 btn btn-light" style="margin: 4%">
                              <div class="product-image-wrapper">
 
                                 <div class="single-products">
@@ -24,14 +24,27 @@
                                             <input type="hidden" value="{{$product->product_price}}" class="cart_product_price_{{$product->product_id}}">
                                             <input type="hidden" value="1" class="cart_product_qty_{{$product->product_id}}">
 
-                                            <a href="{{URL::to('/chi-tiet/'.$product->product_slug)}}">
-                                                <img src="{{URL::to('public/uploads/product/'.$product->product_image)}}" alt="" />
-                                                <h2>{{number_format($product->product_price,0,',','.').' '.'VNĐ'}}</h2>
-                                                <p>{{$product->product_name}}</p>
+                                            <a href="{{URL::to('/chi-tiet/'.$product->slug_category_product)}}">
+                                                <div class="cake_feature_item">
+                                                    <a href="{{URL::to('/chi-tiet/'.$product->product_id)}}">
+                                                        <div class="cake_img">
+                                                            <img width="270" height="226"
+                                                                 src="{{URL::to('uploads/product/'.$product->product_image)}}"
+                                                                 alt="">
+                                                        </div>
+                                                        <div class="cake_text">
+                                                            <h4>${{number_format($product->product_price,0,',','.')}}</h4>
+                                                            <h3>{{$product->product_name}}</h3>
+                                                        </div>
+                                                    </a>
+                                                    <input type="button" value="Thêm giỏ hàng"
+                                                           class="btn btn-default add-to-cart pest_btn"
+                                                           data-id_product="{{$product->product_id}}" name="add-to-cart">
+                                                </div>
 
 
                                              </a>
-                                            <input type="button" value="Thêm giỏ hàng" class="btn btn-default add-to-cart" data-id_product="{{$product->product_id}}" name="add-to-cart">
+                                            
                                             </form>
 
                                         </div>

@@ -140,7 +140,6 @@
                         $total = 0;
                     @endphp
                     @foreach($order_details as $key => $details)
-
                         @php
                             $i++;
                             $subtotal = $details->product_price*$details->product_sales_quantity;
@@ -220,8 +219,8 @@
                                         <select class="form-control order_details">
                                             <option value="">----Chọn hình thức đơn hàng-----</option>
                                             <option id="{{$or->order_id}}" selected value="1">Chưa xử lý</option>
-                                            <option id="{{$or->order_id}}" value="2">Đã xử lý-Đã giao hàng</option>
-                                            <option id="{{$or->order_id}}" value="3">Hủy đơn hàng-tạm giữ</option>
+                                            <option id="{{$or->order_id}}" value="2">Đã xử lý - Đã giao hàng</option>
+                                            <option id="{{$or->order_id}}" value="3">Hủy đơn hàng-hoàn trả</option>
                                         </select>
                                     </form>
                                 @elseif($or->order_status==2)
@@ -232,7 +231,7 @@
                                             <option disabled id="{{$or->order_id}}" value="1">Chưa xử lý</option>
                                             <option id="{{$or->order_id}}" selected value="2">Đã xử lý-Đã giao hàng
                                             </option>
-                                            <option id="{{$or->order_id}}" value="3">Hủy đơn hàng-tạm giữ</option>
+                                            <option id="{{$or->order_id}}" value="3">Hủy đơn hàng-hoàn trả</option>
                                         </select>
                                     </form>
 
@@ -243,7 +242,7 @@
                                             <option value="">----Chọn hình thức đơn hàng-----</option>
                                             <option id="{{$or->order_id}}" value="1">Chưa xử lý</option>
                                             <option id="{{$or->order_id}}" value="2">Đã xử lý-Đã giao hàng</option>
-                                            <option id="{{$or->order_id}}" selected value="3">Hủy đơn hàng-tạm giữ
+                                            <option id="{{$or->order_id}}" selected value="3">Hủy đơn hàng-hoàn trả
                                             </option>
                                         </select>
 

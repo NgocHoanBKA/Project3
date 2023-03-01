@@ -14,7 +14,7 @@
     <title>{{$meta_title}}</title>
     <!-- Css layout bánh -->
     <link href="{{asset('layout/css/font-awesome.min.css')}}" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap.min.css">
 
     <link href="{{asset('layout/vendors/linearicons/style.css')}}" rel="stylesheet">
     <link href="{{asset('layout/vendors/flat-icon/flaticon.css')}}" rel="stylesheet">
@@ -104,7 +104,10 @@
 <script src="{{asset('frontend/js/price-range.js')}}"></script>
 <script src="{{asset('frontend/js/jquery.prettyPhoto.js')}}"></script>
 <script src="{{asset('frontend/js/main.js')}}"></script>
-
+<script type="text/javascript" charset="utf8"
+        src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" charset="utf8"
+        src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap.min.js"></script>
 
 <script src="{{asset('frontend/js/sweetalert.min.js?')}}{{\Carbon\Carbon::now()->format('h:i:s')}}"></script>
 {{--  <script src="https://www.paypal.com/sdk/js?client-id=sb"></script>

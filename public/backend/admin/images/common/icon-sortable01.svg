@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+  <g id="Group_6441" data-name="Group 6441" transform="translate(-1336 -263)">
+    <g id="Rectangle_2585" data-name="Rectangle 2585" transform="translate(1336 263)" fill="#fff" stroke="#e1e2e6" stroke-width="1">
+      <rect width="40" height="40" rx="8" stroke="none"/>
+      <rect x="0.5" y="0.5" width="39" height="39" rx="7.5" fill="none"/>
+    </g>
+    <g id="drag_handle_black_24dp" transform="translate(1344 271)">
+      <path id="Path_5674" data-name="Path 5674" d="M0,0H24V24H0Z" fill="none"/>
+      <path id="Path_5675" data-name="Path 5675" d="M20,9H4v2H20ZM4,15H20V13H4Z" fill="#9da0aa"/>
+      <path id="Polygon_1" data-name="Polygon 1" d="M2.5,0,5,4H0Z" transform="translate(10 2)" fill="#9da0aa"/>
+      <path id="Polygon_2" data-name="Polygon 2" d="M2.5,0,5,4H0Z" transform="translate(15 22) rotate(180)" fill="#9da0aa"/>
+    </g>
+  </g>
+</svg>

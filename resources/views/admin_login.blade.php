@@ -296,14 +296,14 @@
 
         </div>
 
-        <h2 id="title">Welcome to Divider</h2>
+        <h2 id="title">Welcome to Cake Website</h2>
         <h3 id="subtitle">You are moments away from your first adventure.</h3>
 
     </div>
 
     <div class="animated bounceInDown" id="rightSquare">
         <div id="container">
-            <h1 class="signup">Sign Up </h1>
+            <h1 class="signup">Cake Bakery</h1>
             <form className="animated slideInLeft">
                 <?php
 

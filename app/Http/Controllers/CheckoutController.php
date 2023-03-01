@@ -26,9 +26,13 @@ use Carbon\Carbon;
 
 class CheckoutController extends Controller
 {
-    public function check_order(){
+    public function check_order(Request $request){
+        $vnpay_data=$request->all();
         $input = Session::get('Check_order');
-        return $this->confirm_order($input);
+        $vnpay['transactionNo'] = $vnpay_data['vnp_TransactionNo'];
+        $vnpay['bankCode'] = $vnpay_data['vnp_BankCode'];
+        $vnpay['cardType'] = $vnpay_data['vnp_CardType'];
+        return $this->confirm_order($input,$vnpay);
     }
     public function vnPayment(Request $request){
         $input= $request->all();
@@ -106,10 +110,13 @@ class CheckoutController extends Controller
                 } else {
                     echo json_encode($returnData);
                 }
+                $input['transactionNo'] = $vnp_Url['vnp_TransactionNo'];
+                $input['bankCode'] = $vnp_Url['vnp_BankCode'];
+                $input['cardType'] = $vnp_Url['vnp_CardType'];
         }
 
     }
-    public function confirm_order($data)
+    public function confirm_order($data,$vnpay=null)
     {
             $shipping = new Shipping();
             $shipping->shipping_name = $data['shipping_name'];
@@ -142,8 +149,14 @@ class CheckoutController extends Controller
             $order->created_at = $today;
             $order->order_date = $order_date;
             $order->order_by_month = Carbon::now('Asia/Ho_Chi_Minh')->format('m');
+            if (!empty($vnpay)){
+            $order->transactionNo = $vnpay['transactionNo'];
+            $order->bankCode = $vnpay['bankCode'];
+            $order->cardType = $vnpay['cardType'];
+            }
             $order->save();
-
+            Session::put('order',$order);
+            Session::save();
             if (Session::get('cart') == true) {
                 foreach (Session::get('cart') as $key => $cart) {
                     $order_details = new OrderDetails;
@@ -167,9 +180,12 @@ class CheckoutController extends Controller
 
     }
     public function billingComplete($order_details){
-        $product_detail = DB::table('tbl_product')
-            ->join('tbl_order_details','tbl_product.product_id','=','tbl_order_details.product_id')
-            ->where('tbl_product.product_id','=',$order_details->product_id)
+        $order = Session::get('order');
+        $product_detail = DB::table('tbl_order')
+            ->join('tbl_order_details','tbl_order.order_id','=','tbl_order_details.order_id')
+            ->join('tbl_customers','tbl_order.customer_id','=','tbl_customers.customer_id')
+            ->join('tbl_product','tbl_order_details.product_id','=','tbl_product.product_id')
+            ->where('tbl_order.order_id','=',$order['order_id'])
             ->first();
         $url_canonical = \Illuminate\Support\Facades\Request::url();
         $category= DB::table('tbl_category_product')->get();
@@ -177,6 +193,21 @@ class CheckoutController extends Controller
         $meta_keywords = "bánh ngọt, bánh mặn, bánh trái cây, bánh kem, bánh crepe, bánh pizza, bánh su kem";
         $meta_title = "Cake Bakery";
         return view('pages.billing.billing_complete',compact('meta_keywords','meta_desc','meta_title','url_canonical','category','product_detail'));
+    }
+    public function account(){
+        $url_canonical = \Illuminate\Support\Facades\Request::url();
+        $order = Session::get('order');
+        $product_detail = DB::table('tbl_order')
+            ->join('tbl_order_details','tbl_order.order_id','=','tbl_order_details.order_id')
+            ->join('tbl_customers','tbl_order.customer_id','=','tbl_customers.customer_id')
+            ->join('tbl_product','tbl_order_details.product_id','=','tbl_product.product_id')
+            ->where('tbl_order.order_id','=',$order['order_id'])
+            ->first();
+        $category= DB::table('tbl_category_product')->get();
+        $meta_desc = "Chuyên bán những bánh ngọt ,các loại bánh";
+        $meta_keywords = "bánh ngọt, bánh mặn, bánh trái cây, bánh kem, bánh crepe, bánh pizza, bánh su kem";
+        $meta_title = "Cake Bakery";
+        return view('pages.billing.account',compact('meta_keywords','meta_desc','meta_title','url_canonical','category','product_detail'));
     }
     public function del_fee()
     {
@@ -279,7 +310,6 @@ class CheckoutController extends Controller
     public function login_checkout(Request $request)
     {
         //slide
-        $slider = Slider::orderBy('slider_id', 'DESC')->where('slider_status', '1')->take(4)->get();
 
         //seo
         $meta_desc = "Đăng nhập thanh toán";
@@ -291,7 +321,7 @@ class CheckoutController extends Controller
         $cate_product = DB::table('tbl_category_product')->where('category_status', '0')->orderby('category_id', 'desc')->get();
         $brand_product = DB::table('tbl_brand')->where('brand_status', '0')->orderby('brand_id', 'desc')->get();
 
-        return view('pages.checkout.login_checkout')->with('category', $cate_product)->with('brand', $brand_product)->with('meta_desc', $meta_desc)->with('meta_keywords', $meta_keywords)->with('meta_title', $meta_title)->with('url_canonical', $url_canonical)->with('slider', $slider);
+        return view('pages.checkout.login_checkout')->with('category', $cate_product)->with('brand', $brand_product)->with('meta_desc', $meta_desc)->with('meta_keywords', $meta_keywords)->with('meta_title', $meta_title)->with('url_canonical', $url_canonical);
     }
 
     public function add_customer(Request $request)
@@ -316,7 +346,6 @@ class CheckoutController extends Controller
     {
         //seo
         //slide
-        $slider = Slider::orderBy('slider_id', 'DESC')->where('slider_status', '1')->take(4)->get();
 
         $meta_desc = "Đăng nhập thanh toán";
         $meta_keywords = "Đăng nhập thanh toán";
@@ -326,9 +355,9 @@ class CheckoutController extends Controller
 
         $cate_product = DB::table('tbl_category_product')->where('category_status', '0')->orderby('category_id', 'desc')->get();
         $city = City::orderby('matp', 'ASC')->get();
-        return view('pages.billing.billing')->with('category', $cate_product)->with('meta_desc', $meta_desc)->with('meta_keywords', $meta_keywords)->with('meta_title', $meta_title)->with('url_canonical', $url_canonical)->with('city', $city)->with('slider', $slider);
+        return view('pages.billing.billing')->with('category', $cate_product)->with('meta_desc', $meta_desc)->with('meta_keywords', $meta_keywords)->with('meta_title', $meta_title)->with('url_canonical', $url_canonical)->with('city', $city);
 
-//    	return view('pages.checkout.show_checkout')->with('category',$cate_product)->with('meta_desc',$meta_desc)->with('meta_keywords',$meta_keywords)->with('meta_title',$meta_title)->with('url_canonical',$url_canonical)->with('city',$city)->with('slider',$slider);
+//    	return view('pages.checkout.show_checkout')->with('category',$cate_product)->with('meta_desc',$meta_desc)->with('meta_keywords',$meta_keywords)->with('meta_title',$meta_title)->with('url_canonical',$url_canonical)->with('city',$city);
     }
 
     public function save_checkout_customer(Request $request)

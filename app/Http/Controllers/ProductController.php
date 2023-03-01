@@ -221,13 +221,17 @@ class ProductController extends Controller
     {
         //slide
         try {
-            $slider = Slider::orderBy('slider_id', 'DESC')->where('slider_status', '1')->take(4)->get();
             $cate_product = DB::table('tbl_category_product')->where('category_status', '0')->orderby('category_id', 'desc')->get();
             $brand_product = DB::table('tbl_brand')->where('brand_status', '0')->orderby('brand_id', 'desc')->get();
             $details_product = DB::table('tbl_product')
                 ->join('tbl_category_product', 'tbl_category_product.category_id', '=', 'tbl_product.category_id')
                 ->where('tbl_product.product_id', $product_id)->get();
-
+            $value_cakes = DB::table('tbl_suppliers')->where('product_id',$product_id)->get();
+            $material_name = [];
+            foreach ($value_cakes as $key => $value){
+                $material_name['material_name'] = $value->material_name;
+            }
+            Session::put('product_suggest',$material_name);
             foreach ($details_product as $key => $value) {
                 $category_id = $value->category_id;
                 //seo
@@ -244,7 +248,10 @@ class ProductController extends Controller
                 ->where('tbl_category_product.category_id', $category_id)
                 ->whereNotIn('tbl_product.product_id', [$product_id])
                 ->orderby(DB::raw('RAND()'))->paginate(3);
-            return view('pages.sanpham.show_details')->with('category', $cate_product)->with('brand', $brand_product)->with('product_details', $details_product)->with('relate', $related_product)->with('meta_desc', $meta_desc)->with('meta_keywords', $meta_keywords)->with('meta_title', $meta_title)->with('url_canonical', $url_canonical)->with('slider', $slider);
+            return view('pages.sanpham.show_details')->with('category', $cate_product)->with('brand', $brand_product)->with('product_details', $details_product)
+                ->with('relate', $related_product)->with('meta_desc', $meta_desc)->with('meta_keywords', $meta_keywords)->with('meta_title', $meta_title)
+                ->with('url_canonical', $url_canonical)
+                ->with('value_cakes',$value_cakes);
 
         } catch (\Throwable $ex) {
             return back();

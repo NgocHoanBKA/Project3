@@ -3,6 +3,9 @@
     <!--================Product Area =================-->
     @push('custom-css')
         <style>
+            .fa-star-o{
+                background-color: yellow;
+            }
             .filterDiv {
                 display: none;
             }
@@ -84,8 +87,15 @@
                 <div class="row product_item_inner container">
 
                     @foreach($all_product as $key => $product)
-                        @if($product->ExpirationDate>$today)
-                            <div class="col-lg-4 col-md-4 col-6 filterDiv {{$product->category_id}} price_{{$product->product_price}}">
+                            <div class="col-lg-4 col-md-4 col-6 filterDiv all {{$product->category_id}}
+                                @if(in_array($product->product_price,range(0,20000)))
+                                p_1
+                                @elseif(in_array($product->product_price,range(20000,100000)))
+                                p_2
+                                @else
+                                p_3
+                                @endif
+                                ">
                                 <form>
                                     @csrf
                                     <input type="hidden" value="{{$product->product_id}}"
@@ -109,7 +119,7 @@
                                                      alt="">
                                             </div>
                                             <div class="cake_text">
-                                                <h4>${{number_format($product->product_price,0,',','.')}}</h4>
+                                                <h4>{{number_format($product->product_price,0,',','.')}}VNĐ</h4>
                                                 <h3>{{$product->product_name}}</h3>
                                             </div>
                                         </a>
@@ -117,15 +127,8 @@
                                                class="btn btn-default add-to-cart pest_btn"
                                                data-id_product="{{$product->product_id}}" name="add-to-cart">
                                     </div>
-                                    {{--                                            <a href="{{URL::to('/chi-tiet/'.$product->product_id)}}">--}}
-                                    {{--                                                <img src="{{URL::to('uploads/product/'.$product->product_image)}}" alt="" />--}}
-                                    {{--                                                <h2>{{number_format($product->product_price,0,',','.').' '.'VNĐ'}}</h2>--}}
-                                    {{--                                                <p>{{$product->product_name}}</p>--}}
-                                    {{--                                            </a>--}}
                                 </form>
-
                             </div>
-                        @endif
                     @endforeach
 
                 </div>
@@ -180,83 +183,66 @@
                             <h3>Filter By Price</h3>
                         </div>
                         <div class="filter_price">
-                            <div id="slider-range">a</div>
-                            <form action="{{route('filter-price')}}" method="post">
-                            @csrf
+                            <div id="slider-range"></div>
                             <label for="amount">Price range:</label>
                             <input type="text" name="min_price" id="amount" readonly/>
-                            <button type="submit" href="">Filter</button>
-                            </form>
+                            <div class="row" style="display: flex; justify-content: center">
+                                <div class="custom-control custom-checkbox">
+                                    <input     onchange="filterSelection('p_1')" type="checkbox" class="custom-control-input" id="customCheck1">
+                                    <label class="custom-control-label" for="customCheck1">0-1,5$</label>
+                                </div>
+                                <div class="custom-control custom-checkbox" style="margin: 0px 15px;">
+                                    <input     onchange="filterSelection('p_2')" type="checkbox" class="custom-control-input" id="customCheck2">
+                                    <label class="custom-control-label" for="customCheck2">1,5$ - 2,0&</label>
+                                </div>
+                                <div class="custom-control custom-checkbox">
+                                    <input     onchange="filterSelection('p_3')" type="checkbox" class="custom-control-input" id="customCheck3">
+                                    <label class="custom-control-label" for="customCheck3"> > 2,0$</label>
+                                </div>
+                            </div>
                         </div>
                     </aside>
                     <aside class="left_sidebar p_sale_widget">
                         <div class="p_w_title">
-                            <h3>Top Sale Products</h3>
+                            <h3>Suggest Product</h3>
                         </div>
+                        @foreach($product_option as $key => $option)
                         <div class="media">
                             <div class="d-flex">
-                                <img src="public/layout/img/product/sale-product/s-product-1.jpg" alt="">
+                                <img width="100" height="100" src="{{URL::to('uploads/product/'.$option->product_image)}}" alt="">
                             </div>
                             <div class="media-body">
-                                <a href="#"><h4>Brown Cake</h4></a>
-                                <ul class="list_style">
-                                    <li><a href="#"><i class="fa fa-star-o"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star-o"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star-o"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star-o"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star-o"></i></a></li>
-                                </ul>
-                                <h5>$29</h5>
+                                    <a href="#"><h4>{{$option->product_name}}</h4></a>
+                                    <ul class="list_style">
+                                        <li><a href="#"><i class="fa fa-star-o"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-star-o"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-star-o"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-star-o"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-star-o"></i></a></li>
+                                    </ul>
+                                <h4>
+                                    @if($option->material_name == 0)
+                                        <span class="text-success"> Bột mì </span>
+                                    @elseif($option->material_name == 1)
+                                        <span class="text-success"> Bột tạo màu </span>
+                                    @elseif($option->material_name == 2)
+                                        <span class="text-success"> Bơ </span>
+                                    @elseif($option->material_name == 3)
+                                        <span class="text-success"> Đường </span>
+                                    @elseif($option->material_name == 4)
+                                        <span class="text-success"> Sữa </span>
+                                    @elseif($option->material_name == 5)
+                                        <span class="text-success"> Vani </span>
+                                    @elseif($option->material_name == 6)
+
+                                    @else
+                                        <span></span>
+                                    @endif
+                                </h4>
+                                <h5>{{number_format($option->product_price)}}</h5>
                             </div>
                         </div>
-                        <div class="media">
-                            <div class="d-flex">
-                                <img src="public/layout/img/product/sale-product/s-product-2.jpg" alt="">
-                            </div>
-                            <div class="media-body">
-                                <a href="#"><h4>Brown Cake</h4></a>
-                                <ul class="list_style">
-                                    <li><a href="#"><i class="fa fa-star-o"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star-o"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star-o"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star-o"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star-o"></i></a></li>
-                                </ul>
-                                <h5>$29</h5>
-                            </div>
-                        </div>
-                        <div class="media">
-                            <div class="d-flex">
-                                <img src="public/layout/img/product/sale-product/s-product-3.jpg" alt="">
-                            </div>
-                            <div class="media-body">
-                                <a href="#"><h4>Brown Cake</h4></a>
-                                <ul class="list_style">
-                                    <li><a href="#"><i class="fa fa-star-o"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star-o"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star-o"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star-o"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star-o"></i></a></li>
-                                </ul>
-                                <h5>$29</h5>
-                            </div>
-                        </div>
-                        <div class="media">
-                            <div class="d-flex">
-                                <img src="public/layout/img/product/sale-product/s-product-4.jpg" alt="">
-                            </div>
-                            <div class="media-body">
-                                <a href="#"><h4>Brown Cake</h4></a>
-                                <ul class="list_style">
-                                    <li><a href="#"><i class="fa fa-star-o"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star-o"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star-o"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star-o"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star-o"></i></a></li>
-                                </ul>
-                                <h5>$29</h5>
-                            </div>
-                        </div>
+                        @endforeach
                     </aside>
                 </div>
             </div>
